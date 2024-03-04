@@ -12,6 +12,11 @@ class Road{
         this.bottom=infinity;
 
     }
+    getLaneCenter(laneIndex){
+        const lanewidth=this.width/this.lanecount;
+        return this.left+lanewidth/2+Math.min(laneIndex,this.lanecount-1)*lanewidth;
+
+    }
     draw(ctx){
         ctx.linewidth=5;
         ctx.strokeStyle="white";
@@ -22,16 +27,18 @@ class Road{
                 this.right,
                 i/this.lanecount
             );
-            ctx.beginpath();
+            if(i>0 && i<this.lanecount){
+                ctx.setLineDash([20,20]);
+            }else{
+                ctx.setLineDash([]);
+            }
+            ctx.beginPath();
             ctx.moveTo(x,this.top);
             ctx.lineTo(x,this.bottom);
-            cyx.stocke();
+            ctx.stroke();
 
         
         }
     }       
 }   
 
-function lerp(A,B,t){
-    return A+(B-A)*t;
-}
