@@ -1,8 +1,8 @@
 class Road{
-    constructor(x,width,lanecount=4){
+    constructor(x,width,laneCount=4){
         this.x=x;
         this.width;
-        this.lanecount=lanecount;
+        this.laneCount=laneCount;
 
         this.left=x-width/2;
         this.right=x+width/2;
@@ -22,19 +22,19 @@ class Road{
 
     }
     getLaneCenter(laneIndex){
-        const lanewidth=this.width/this.lanecount;
-        return this.left+lanewidth/2+Math.min(laneIndex,this.lanecount-1)*lanewidth;
+        const lanewidth=this.width/this.laneCount;
+        return this.left+lanewidth/2+Math.min(laneIndex,this.laneCount-1)*lanewidth;
 
     }
     draw(ctx){
         ctx.linewidth=5;
         ctx.strokeStyle="white";
 
-        for(let i=1;i<=this.lanecount-1;i++){
+        for(let i=1;i<=this.laneCount-1;i++){
             const x=lerp(
                 this.left,
                 this.right,
-                i/this.lanecount
+                i/this.laneCount
             );
             
             ctx.setLineDash([20,20]);
