@@ -3,7 +3,7 @@ class Sensor{
         this.car=car;
         this.rayCount=3;
         this.rayLength=100;
-        this.raySpread=Math.PI/4;
+        this.raySpread=Math.PI/2;
 
         this.rays=[];
         this.readings=[];
@@ -37,9 +37,9 @@ class Sensor{
         if(touches.length==0){
             return null;
         }else{
-            const offsets=touches.map(e>=e.offset);
-            const minoffset=Math.min(...offset);
-            return touches.find(e>=e.offset);
+            const offsets=touches.map(e=>e.offset);
+            const minOffset=Math.min(...offsets);
+            return touches.find(e=>e.offset==minOffset);
 
 
         }
@@ -67,9 +67,9 @@ class Sensor{
             if(this.readings[i]){
                 end=this.readings[i];
             }
-             ctx.beginpath();
+             ctx.beginPath();
              ctx.linewedth=2;
-            ctx.strokestyle="yellow";
+            ctx.strokeStyle="yellow";
             ctx.moveTo(
                 this.rays[i][0].x,
                 this.rays[i][0].y
@@ -79,9 +79,9 @@ class Sensor{
                 end.y
              );
              ctx.stroke();
-             ctx.beginpath();
+             ctx.beginPath();
              ctx.linewedth=2;
-            ctx.strokestyle="black";
+            ctx.strokeStyle="black";
             ctx.moveTo(
                 this.rays[i][1].x,
                 this.rays[i][1].y

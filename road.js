@@ -1,7 +1,7 @@
 class Road{
     constructor(x,width,laneCount=4){
         this.x=x;
-        this.width;
+        this.width=width;
         this.laneCount=laneCount;
 
         this.left=x-width/2;
